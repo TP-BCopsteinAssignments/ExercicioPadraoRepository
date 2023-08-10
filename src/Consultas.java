@@ -40,14 +40,15 @@ public class Consultas {
                 int mes = Integer.parseInt(data[1]);
                 int ano = Integer.parseInt(data[2]);
                 // Trata demais dados
-                double precipitacaoMaxima = Double.parseDouble(dados[1]);
-                double precipitacaoMinima = Double.parseDouble(dados[2]);
-                double horasInsolacao = Double.parseDouble(dados[3]);
-                double temperaturaMedia = Double.parseDouble(dados[4]);
-                double umidadeRelativaDoAr = Double.parseDouble(dados[5]);
-                double velocidadeDoVento = Double.parseDouble(dados[6]);
+                double precipitacao = Double.parseDouble(dados[1]);
+                double tempMaxima = Double.parseDouble(dados[2]);
+                double tempMinima = Double.parseDouble(dados[3]);
+                double horasInsolacao = Double.parseDouble(dados[4]);
+                double temperaturaMedia = Double.parseDouble(dados[5]);
+                double umidadeRelativaDoAr = Double.parseDouble(dados[6]);
+                double velocidadeDoVento = Double.parseDouble(dados[7]);
                 // Cria um registro e insere na lista
-                RegistroDoTempo reg = new RegistroDoTempo(dia, mes, ano, precipitacaoMaxima, precipitacaoMinima, horasInsolacao, temperaturaMedia, umidadeRelativaDoAr, velocidadeDoVento);
+                RegistroDoTempo reg = new RegistroDoTempo(dia, mes, ano, precipitacao, tempMaxima, tempMinima, horasInsolacao, temperaturaMedia, umidadeRelativaDoAr, velocidadeDoVento);
                 registros.add(reg);
             }
          }catch (IOException x){
@@ -58,7 +59,7 @@ public class Consultas {
     public List<String> datasEmQueChouveuMaisDe(double milimetros){
         return registros
             .stream()
-            .filter(r->r.getPrecipitacaoMaxima() > milimetros)
+            .filter(r->r.getPrecipitacao() > milimetros)
             .map(r->r.getDia()+"/"+r.getMes()+"/"+r.getAno())
             .toList();
     }
@@ -67,9 +68,9 @@ public class Consultas {
         RegistroDoTempo registro = registros
         .stream()
         .filter(reg->reg.getAno() == ano)
-        .max(Comparator.comparing(RegistroDoTempo::getPrecipitacaoMaxima))
+        .max(Comparator.comparing(RegistroDoTempo::getPrecipitacao))
         .orElseThrow(IllegalArgumentException::new);
-        String resp = registro.getDia()+"/"+registro.getMes()+"/"+registro.getAno()+", "+registro.getPrecipitacaoMaxima();
+        String resp = registro.getDia()+"/"+registro.getMes()+"/"+registro.getAno()+", "+registro.getPrecipitacao();
         return resp;
     }
 }

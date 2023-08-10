@@ -3,20 +3,22 @@ public class RegistroDoTempo {
     private int dia;
     private int mes;
     private int ano;
-    private double precipitacaoMaxima;
-    private double precipitacaoMinima;
+    private double precipitacao;
+    private double tempMaxima;
+    private double tempMinima;
     private double horasInsolacao;
     private double temperaturaMedia;
     private double umidadeRelativaDoAr;
     private double velocidadeDoVento;
     
-    public RegistroDoTempo(int dia, int mes, int ano, double precipitacaoMaxima, double precipitacaoMinima,
+    public RegistroDoTempo(int dia, int mes, int ano, double precipitacao, double tempMaxima, double tempMinima,
             double horasInsolacao, double temperaturaMedia, double umidadeRelativaDoAr, double velocidadeDoVento) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
-        this.precipitacaoMaxima = precipitacaoMaxima;
-        this.precipitacaoMinima = precipitacaoMinima;
+        this.precipitacao = precipitacao;
+        this.tempMaxima = tempMaxima;
+        this.tempMinima = tempMinima;
         this.horasInsolacao = horasInsolacao;
         this.temperaturaMedia = temperaturaMedia;
         this.umidadeRelativaDoAr = umidadeRelativaDoAr;
@@ -47,20 +49,28 @@ public class RegistroDoTempo {
         this.ano = ano;
     }
 
-    public double getPrecipitacaoMaxima() {
-        return precipitacaoMaxima;
+    public double getPrecipitacao() {
+        return precipitacao;
     }
 
-    public void setPrecipitacaoMaxima(double precipitacaoMaxima) {
-        this.precipitacaoMaxima = precipitacaoMaxima;
+    public void setPrecipitacao(double precipitacao) {
+        this.precipitacao = precipitacao;
     }
 
-    public double getPrecipitacaoMinima() {
-        return precipitacaoMinima;
+    public double getTempMaxima() {
+        return tempMaxima;
     }
 
-    public void setPrecipitacaoMinima(double precipitacaoMinima) {
-        this.precipitacaoMinima = precipitacaoMinima;
+    public void setTempMaxima(double tempMaxima) {
+        this.tempMaxima = tempMaxima;
+    }
+
+    public double getTempMinima() {
+        return tempMinima;
+    }
+
+    public void setTempMinima(double tempMinima) {
+        this.tempMinima = tempMinima;
     }
 
     public double getHorasInsolacao() {
@@ -98,10 +108,9 @@ public class RegistroDoTempo {
     @Override
     public String toString() {
         return "RegistroDoTempo [ano=" + ano + ", dia=" + dia + ", horasInsolacao=" + horasInsolacao + ", mes=" + mes
-                + ", precipitacaoMaxima=" + precipitacaoMaxima + ", precipitacaoMinima=" + precipitacaoMinima
+                + ", precipitacao=" + precipitacao 
+                + ", temperatura Maxima=" + tempMaxima + ", temperatura Minima=" + tempMinima
                 + ", temperaturaMedia=" + temperaturaMedia + ", umidadeRelativaDoAr=" + umidadeRelativaDoAr
                 + ", velocidadeDoVento=" + velocidadeDoVento + "]";
-    }
-
-    
+    }    
 }
